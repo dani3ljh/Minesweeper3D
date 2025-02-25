@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://n8a7b4rf62mu"]
+
+[ext_resource type="Script" path="res://scripts/Cell.gd" id="1_l1i26"]
+[ext_resource type="PackedScene" uid="uid://dcsaopd1rcr36" path="res://models/dirt_4k.glb" id="1_qpwac"]
+[ext_resource type="PackedScene" uid="uid://cf738v10hm0fo" path="res://scenes/flag.tscn" id="4_e7uta"]
+[ext_resource type="AudioStream" uid="uid://batln3d3xabxo" path="res://sounds/explosion.wav" id="4_nqrls"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ydtjf"]
+size = Vector3(1.81635, 0.0711855, 1.82275)
+
+[node name="Cell" type="Node3D"]
+script = ExtResource("1_l1i26")
+isMine = true
+
+[node name="dirt_4k" parent="." instance=ExtResource("1_qpwac")]
+
+[node name="explodeBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="explodeBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196228, 0.0365107, -0.041748)
+shape = SubResource("BoxShape3D_ydtjf")
+
+[node name="flag" parent="." instance=ExtResource("4_e7uta")]
+visible = false
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.00537624, 0)
+visible = false
+pixel_size = 0.004
+text = "0"
+font_size = 168
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_nqrls")
+
+[connection signal="area_entered" from="explodeBox" to="." method="_on_area_entered"]

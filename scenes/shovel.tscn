@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://hlgvb0w5wwks"]
+
+[ext_resource type="PackedScene" uid="uid://csr2hossve8hx" path="res://models/shovel.glb" id="1_xafhk"]
+[ext_resource type="Material" uid="uid://d3alffd40kno0" path="res://materials/metal.tres" id="2_7mh7r"]
+[ext_resource type="Material" uid="uid://dsabldm21f2d0" path="res://materials/wood.tres" id="3_mt2qk"]
+[ext_resource type="Material" uid="uid://jxnatavfcuws" path="res://materials/brass.tres" id="4_30481"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1sh10"]
+size = Vector3(0.99379, 0.184784, 0.808594)
+
+[node name="shovel" instance=ExtResource("1_xafhk")]
+transform = Transform3D(0.351053, 0, 0, 0, 0.351053, 0, 0, 0, 0.351053, 0, 0, 0)
+
+[node name="Head" parent="." index="1"]
+material_override = ExtResource("2_7mh7r")
+
+[node name="Area3D" type="Area3D" parent="Head" index="0" groups=["miner"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.110603, 0.0761261, 0.00488281)
+shape = SubResource("BoxShape3D_1sh10")
+
+[node name="Cylinder" parent="." index="2"]
+material_override = ExtResource("2_7mh7r")
+
+[node name="Cylinder_001" parent="." index="3"]
+material_override = ExtResource("3_mt2qk")
+
+[node name="Cylinder_002" parent="." index="4"]
+material_override = ExtResource("4_30481")
+
+[node name="Handle" parent="." index="5"]
+material_override = ExtResource("2_7mh7r")

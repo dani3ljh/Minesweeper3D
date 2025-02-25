@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf738v10hm0fo"]
+
+[ext_resource type="PackedScene" uid="uid://d8mmmfqtqcg2" path="res://models/flag.glb" id="1_4etrh"]
+[ext_resource type="Material" uid="uid://d3alffd40kno0" path="res://materials/metal.tres" id="2_kuau7"]
+[ext_resource type="Material" uid="uid://1dcjob3yxlpw" path="res://materials/flag.tres" id="3_lbj33"]
+
+[node name="flag" instance=ExtResource("1_4etrh")]
+
+[node name="Cylinder_001" parent="." index="0"]
+material_override = ExtResource("2_kuau7")
+
+[node name="Cube" parent="." index="2"]
+material_override = ExtResource("3_lbj33")
