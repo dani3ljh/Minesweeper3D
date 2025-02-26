@@ -39,13 +39,35 @@ func _ready():
 			instance.x = x
 			instance.y = y
 			instance.boardManager = self
-			instance.isMine = randf() < minePercentage / 100
+			instance.isMine = false
 			
 			board[y].append(instance)
 	
-	# print_board()
+	_set_mines()
+	
+	# _print_board()
 
-func print_board():
+func _get_free_indicies() -> Array[Vector2i]:
+	var freeIndicies: Array[Vector2i]
+	
+	for y in range(0, height):
+		for x in range(0, width):
+			if not board[y][x].isMine:
+				freeIndicies.append(Vector2i(x, y))
+	
+	return freeIndicies
+
+func _set_mines():
+	var count = width * height * minePercentage / 100
+	
+	for _i in range(0, count):
+		var freeIndicies = _get_free_indicies()
+		var index = randi() % freeIndicies.size()
+		
+		var pos = freeIndicies[index]
+		board[pos.y][pos.x].isMine = true
+
+func _print_board():
 	for y in range(0, height):
 		var out = "["
 		for x in range(0, width):
