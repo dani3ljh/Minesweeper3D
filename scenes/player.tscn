@@ -137,7 +137,7 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_ifyuw"]
 radius = 0.163159
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_41qfa")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

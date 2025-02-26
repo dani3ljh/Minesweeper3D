@@ -1,6 +1,7 @@
 extends Node
 
 @onready var animation_player = $AnimationPlayer
+@onready var player = $"../../.."
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,5 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_just_pressed("dig"):
+	if Input.is_action_just_pressed("dig") and player.isPlaying:
 		animation_player.play("dig");
