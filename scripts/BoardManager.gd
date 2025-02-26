@@ -33,8 +33,8 @@ func _ready():
 			var meshSize = _find_mesh_instance(instance).get_aabb().size
 			
 			instance.position = startPosition
-			instance.position.x += (meshSize.x / 2 + gap) * x
-			instance.position.z += (meshSize.z / 2 + gap) * y
+			instance.position.x += (meshSize.x + gap) * x
+			instance.position.z += (meshSize.z + gap) * y
 			
 			instance.x = x
 			instance.y = y
